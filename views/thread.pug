@@ -1,0 +1,59 @@
+doctype
+html(lang="en")
+
+    head
+        meta(charset="UTF-8")
+        meta(description="Check dubs on 4chan threads.")
+        title Dubs Checker
+        
+        script(src="https://code.jquery.com/jquery-3.2.1.slim.js"
+            integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg="
+            crossorigin="anonymous")
+
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous")
+        
+        script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous")
+        
+        link(rel="stylesheet" href="/css/style.css")
+        
+        script(src="/js/parseurl.js" language="javascript")
+
+    body
+        div(id="input" class="container centered")
+            h3(class="row") Check thread for dubs:
+            div(class="row")
+                input(id="threadurl" type="text" placeholder="Thread URL" label="Thread URL")
+                a(id="checkbutton" class="btn btn-primary btn-sm" role="button" onclick="submitUrl()") Check 'em!
+
+        hr(class="row centered")
+
+        - if (error) {
+            div(id="info" class="container centered")
+                h1= error
+        - }
+        
+        - if (data) {
+
+        div(id="info" class="container centered")
+            h1(class="row")= '/' + data.board + '/'
+                small= data.thread
+            p(class="row")= 'Posts: ' + data.posts
+            p(class="row")= 'Gets: ' + data.dubscount
+            p(class="row")= 'Gets percentage: ' + data.dubspercent + '%'
+
+        hr(class="row centered")
+        
+        ul(id="checks" class="container centered")
+            label(class="row") Checked:
+
+            - for (var i=0; i < data.dubs.length; i++) {
+                li
+                    a(href='https://boards.4chan.org/' + data.board + '/thread/'
+                        + data.thread + '#p' + data.dubs[i])=data.dubs[i]
+            - }
+        
+        -}

@@ -1,0 +1,26 @@
+{
+  "name": "checkem",
+  "version": "1.0.0",
+  "description": "Counts dubs, trips, quads etc on 4chan threads.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "4chan",
+    "dubs",
+    "trips",
+    "checkem",
+    "quads",
+    "quints",
+    "gets"
+  ],
+  "author": "Shmunj",
+  "license": "GPL2",
+  "dependencies": {
+    "express": "^4.15.3",
+    "pug": "^2.0.0-rc.2",
+    "request": "^2.81.0"
+  }
+}

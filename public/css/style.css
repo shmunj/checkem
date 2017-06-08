@@ -1,0 +1,9 @@
+.centered {
+    margin: auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+#checks {
+    list-style-type: none;
+}
